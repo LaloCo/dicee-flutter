@@ -15,25 +15,39 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+// The variables that will be part of the state (that will change)
+// have to be defined outside the build function for setState to work
+class _DicePageState extends State<DicePage> {
+  var leftDiceNumber = 1;
+  var rightDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
-    var leftDiceNumber = 1;
-    var rightDiceNumber = 1;
-
     return Center(
       child: Row(
         children: <Widget>[
           Expanded(
             child: FlatButton(
               child: Image.asset('images/dice$leftDiceNumber.png'),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  leftDiceNumber = 2;
+                });
+              },
             ),
           ),
           Expanded(
             child: FlatButton(
               child: Image.asset('images/dice$rightDiceNumber.png'),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  rightDiceNumber = 4;
+                });
+              },
             ),
           ),
         ],
